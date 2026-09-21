@@ -35,6 +35,8 @@
 
 Data.lua
 Skills.lua
+Scan_Forever.lua [AllowLoadGameType camelot]
+Scan_Classic.lua [AllowLoadGameType vanilla]
 Media.lua
 Bar.lua
 Options.lua

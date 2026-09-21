@@ -8,3 +8,4 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Floating bar with a tile for every profession, secondary skill and weapon skill
 - Alerts when a skill is capped or ready for the next rank
 - Custom bar textures and fonts, with LibSharedMedia support
+- WoW Forever support

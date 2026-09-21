@@ -102,7 +102,8 @@ local function ShowTooltip(tile)
 	if not entry then return end
 	local skill = entry.skill
 
-	GameTooltip:SetOwner(tile, "ANCHOR_TOP")
+	GameTooltip:SetOwner(tile, "ANCHOR_NONE")
+	GameTooltip:SetPoint("TOPLEFT", tile.bar, "BOTTOMLEFT", 0, -2)
 	GameTooltip:AddLine(skill.name, 1, 1, 1)
 	local rankName = skill.ranks and ns.RANK_NAMES[entry.max]
 	if rankName then GameTooltip:AddLine(rankName, GREY[1], GREY[2], GREY[3]) end

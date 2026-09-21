@@ -20,8 +20,6 @@ ns.scanned = false
 ---@type table<string, number>
 local sessionStart = {}
 local pending = false
--- SKILL_LINES_CHANGED fires inside ExpandSkillHeader and CollapseSkillHeader, before they return.
-local togglingHeaders = false
 
 ---@param entry SkillEntry
 ---@return number
@@ -90,63 +88,21 @@ local function Alert(entry)
 	if ns.db.sound then PlaySound(SOUNDKIT.RAID_WARNING) end
 end
 
----@return table<string, boolean>? names
-local function CollapsedHeaders()
-	local names
-	for i = 1, GetNumSkillLines() do
-		local name, isHeader, isExpanded = GetSkillLineInfo(i)
-		if isHeader and not isExpanded then
-			names = names or {}
-			names[name] = true
-		end
-	end
-	return names
-end
-
----@param names table<string, boolean>
-local function CollapseBottomUp(names)
-	for i = GetNumSkillLines(), 1, -1 do
-		local name, isHeader = GetSkillLineInfo(i)
-		if isHeader and names[name] then CollapseSkillHeader(i) end
-	end
-end
-
-local function CanToggleHeaders() return not SkillFrame:IsShown() end
-
--- Collapsed headers hide their skill lines from the API, so the scan opens
--- them all and puts them back afterwards.
----@return table<string, SkillEntry>? found
-local function Scan()
-	local collapsed = CollapsedHeaders()
-	if collapsed then
-		if not CanToggleHeaders() then return nil end
-		togglingHeaders = true
-		ExpandSkillHeader(0)
-	end
-
-	---@type table<string, SkillEntry>
-	local found = {}
-	for i = 1, GetNumSkillLines() do
-		local name, isHeader, _, rank, _, bonus, max = GetSkillLineInfo(i)
-		local skill = ns.SKILL_BY_ENUS_NAME[name]
-		if skill and not isHeader then
-			local nextRank = skill.ranks and skill.ranks[max]
-			found[name] = {
-				skill = skill,
-				rank = rank,
-				bonus = bonus,
-				max = max,
-				nextRank = nextRank,
-				state = GetState(rank, max, nextRank),
-			}
-		end
-	end
-
-	if collapsed then
-		CollapseBottomUp(collapsed)
-		togglingHeaders = false
-	end
-	return found
+---@param skill Skill
+---@param rank number
+---@param bonus number
+---@param max number
+---@return SkillEntry
+function ns.NewEntry(skill, rank, bonus, max)
+	local nextRank = skill.ranks and skill.ranks[max]
+	return {
+		skill = skill,
+		rank = rank,
+		bonus = bonus,
+		max = max,
+		nextRank = nextRank,
+		state = GetState(rank, max, nextRank),
+	}
 end
 
 ---@type string[]
@@ -178,7 +134,7 @@ end
 
 local function RunScan()
 	pending = false
-	local found = Scan()
+	local found = ns.Scan()
 	if found then Update(found) end
 end
 
@@ -186,13 +142,4 @@ function ns.RequestScan()
 	if pending then return end
 	pending = true
 	C_Timer.After(DEBOUNCE, RunScan)
-end
-
-function ns.OnSkillLinesChanged()
-	if not togglingHeaders then ns.RequestScan() end
-end
-
-function ns.StartScanning()
-	SkillFrame:HookScript("OnHide", ns.RequestScan)
-	ns.RequestScan()
 end

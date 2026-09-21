@@ -1,6 +1,8 @@
 {
   "ignore": ["Libs/"],
-  "flavors": ["classic"],
+  "globals": {
+    "read": ["C_SkillInfo", "UnitDefenseSkill"]
+  },
   "diagnostics": {
     "enable": ["need-check-nil"]
   }

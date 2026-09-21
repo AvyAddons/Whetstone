@@ -72,6 +72,7 @@ end
 
 ---@class Skill
 ---@field name string
+---@field id number
 ---@field kind SkillKindName
 ---@field iconSpell number
 ---@field ranks table<number, NextRank>?
@@ -81,18 +82,19 @@ end
 
 ---@type Skill[]
 ns.SKILLS = {
-	{ name = "Alchemy", kind = "primary", iconSpell = 2259, ranks = NEXT_RANK_BY_CAP },
-	{ name = "Blacksmithing", kind = "primary", iconSpell = 2018, ranks = NEXT_RANK_BY_CAP },
-	{ name = "Enchanting", kind = "primary", iconSpell = 7411, ranks = NEXT_RANK_BY_CAP },
-	{ name = "Engineering", kind = "primary", iconSpell = 4036, ranks = NEXT_RANK_BY_CAP },
-	{ name = "Herbalism", kind = "primary", iconSpell = 2366, ranks = NEXT_RANK_BY_CAP },
-	{ name = "Leatherworking", kind = "primary", iconSpell = 2108, ranks = NEXT_RANK_BY_CAP },
-	{ name = "Mining", kind = "primary", iconSpell = 2575, ranks = NEXT_RANK_BY_CAP },
-	{ name = "Skinning", kind = "primary", iconSpell = 8613, ranks = NEXT_RANK_BY_CAP },
-	{ name = "Tailoring", kind = "primary", iconSpell = 3908, ranks = NEXT_RANK_BY_CAP },
+	{ name = "Alchemy", id = 171, kind = "primary", iconSpell = 2259, ranks = NEXT_RANK_BY_CAP },
+	{ name = "Blacksmithing", id = 164, kind = "primary", iconSpell = 2018, ranks = NEXT_RANK_BY_CAP },
+	{ name = "Enchanting", id = 333, kind = "primary", iconSpell = 7411, ranks = NEXT_RANK_BY_CAP },
+	{ name = "Engineering", id = 202, kind = "primary", iconSpell = 4036, ranks = NEXT_RANK_BY_CAP },
+	{ name = "Herbalism", id = 182, kind = "primary", iconSpell = 2366, ranks = NEXT_RANK_BY_CAP },
+	{ name = "Leatherworking", id = 165, kind = "primary", iconSpell = 2108, ranks = NEXT_RANK_BY_CAP },
+	{ name = "Mining", id = 186, kind = "primary", iconSpell = 2575, ranks = NEXT_RANK_BY_CAP },
+	{ name = "Skinning", id = 393, kind = "primary", iconSpell = 8613, ranks = NEXT_RANK_BY_CAP },
+	{ name = "Tailoring", id = 197, kind = "primary", iconSpell = 3908, ranks = NEXT_RANK_BY_CAP },
 
 	{
 		name = "Cooking",
+		id = 185,
 		kind = "secondary",
 		iconSpell = 2550,
 		ranks = OverrideRanks({
@@ -102,6 +104,7 @@ ns.SKILLS = {
 	},
 	{
 		name = "First Aid",
+		id = 129,
 		kind = "secondary",
 		iconSpell = 3273,
 		ranks = OverrideRanks({
@@ -111,6 +114,7 @@ ns.SKILLS = {
 	},
 	{
 		name = "Fishing",
+		id = 356,
 		kind = "secondary",
 		iconSpell = 7620,
 		ranks = OverrideRanks({
@@ -119,23 +123,23 @@ ns.SKILLS = {
 		}),
 	},
 
-	{ name = "Defense", kind = "weapon", iconSpell = 204, alwaysShown = true },
-	{ name = "Unarmed", kind = "weapon", iconSpell = 203, emptyHanded = true },
-	{ name = "Daggers", kind = "weapon", iconSpell = 1180, weapon = Enum.ItemWeaponSubclass.Dagger },
-	{ name = "Fist Weapons", kind = "weapon", iconSpell = 15590, weapon = Enum.ItemWeaponSubclass.Unarmed },
-	{ name = "Swords", kind = "weapon", iconSpell = 201, weapon = Enum.ItemWeaponSubclass.Sword1H },
-	{ name = "Two-Handed Swords", kind = "weapon", iconSpell = 202, weapon = Enum.ItemWeaponSubclass.Sword2H },
-	{ name = "Axes", kind = "weapon", iconSpell = 196, weapon = Enum.ItemWeaponSubclass.Axe1H },
-	{ name = "Two-Handed Axes", kind = "weapon", iconSpell = 197, weapon = Enum.ItemWeaponSubclass.Axe2H },
-	{ name = "Maces", kind = "weapon", iconSpell = 198, weapon = Enum.ItemWeaponSubclass.Mace1H },
-	{ name = "Two-Handed Maces", kind = "weapon", iconSpell = 199, weapon = Enum.ItemWeaponSubclass.Mace2H },
-	{ name = "Polearms", kind = "weapon", iconSpell = 200, weapon = Enum.ItemWeaponSubclass.Polearm },
-	{ name = "Staves", kind = "weapon", iconSpell = 227, weapon = Enum.ItemWeaponSubclass.Staff },
-	{ name = "Bows", kind = "weapon", iconSpell = 264, weapon = Enum.ItemWeaponSubclass.Bows },
-	{ name = "Guns", kind = "weapon", iconSpell = 266, weapon = Enum.ItemWeaponSubclass.Guns },
-	{ name = "Crossbows", kind = "weapon", iconSpell = 5011, weapon = Enum.ItemWeaponSubclass.Crossbow },
-	{ name = "Thrown", kind = "weapon", iconSpell = 2567, weapon = Enum.ItemWeaponSubclass.Thrown },
-	{ name = "Wands", kind = "weapon", iconSpell = 5009, weapon = Enum.ItemWeaponSubclass.Wand },
+	{ name = "Defense", id = 95, kind = "weapon", iconSpell = 204, alwaysShown = true },
+	{ name = "Unarmed", id = 162, kind = "weapon", iconSpell = 203, emptyHanded = true },
+	{ name = "Daggers", id = 173, kind = "weapon", iconSpell = 1180, weapon = Enum.ItemWeaponSubclass.Dagger },
+	{ name = "Fist Weapons", id = 473, kind = "weapon", iconSpell = 15590, weapon = Enum.ItemWeaponSubclass.Unarmed },
+	{ name = "Swords", id = 43, kind = "weapon", iconSpell = 201, weapon = Enum.ItemWeaponSubclass.Sword1H },
+	{ name = "Two-Handed Swords", id = 55, kind = "weapon", iconSpell = 202, weapon = Enum.ItemWeaponSubclass.Sword2H },
+	{ name = "Axes", id = 44, kind = "weapon", iconSpell = 196, weapon = Enum.ItemWeaponSubclass.Axe1H },
+	{ name = "Two-Handed Axes", id = 172, kind = "weapon", iconSpell = 197, weapon = Enum.ItemWeaponSubclass.Axe2H },
+	{ name = "Maces", id = 54, kind = "weapon", iconSpell = 198, weapon = Enum.ItemWeaponSubclass.Mace1H },
+	{ name = "Two-Handed Maces", id = 160, kind = "weapon", iconSpell = 199, weapon = Enum.ItemWeaponSubclass.Mace2H },
+	{ name = "Polearms", id = 229, kind = "weapon", iconSpell = 200, weapon = Enum.ItemWeaponSubclass.Polearm },
+	{ name = "Staves", id = 136, kind = "weapon", iconSpell = 227, weapon = Enum.ItemWeaponSubclass.Staff },
+	{ name = "Bows", id = 45, kind = "weapon", iconSpell = 264, weapon = Enum.ItemWeaponSubclass.Bows },
+	{ name = "Guns", id = 46, kind = "weapon", iconSpell = 266, weapon = Enum.ItemWeaponSubclass.Guns },
+	{ name = "Crossbows", id = 226, kind = "weapon", iconSpell = 5011, weapon = Enum.ItemWeaponSubclass.Crossbow },
+	{ name = "Thrown", id = 176, kind = "weapon", iconSpell = 2567, weapon = Enum.ItemWeaponSubclass.Thrown },
+	{ name = "Wands", id = 228, kind = "weapon", iconSpell = 5009, weapon = Enum.ItemWeaponSubclass.Wand },
 }
 
 ---@type table<string, Skill>
