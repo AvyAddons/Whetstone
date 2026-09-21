@@ -1,0 +1,46 @@
+## Interface: 11509, 16001
+
+## Title: Whetstone
+## Notes: Floating bar showing every tradeskill and weapon skills' current skill and cap.
+## Author: Avyiel
+## Version: @project-version@
+## IconTexture: Interface\Icons\inv_stone_sharpeningstone_05
+
+## Category: Professions
+## Category-deDE: Berufe
+## Category-esES: Profesiones
+## Category-esMX: Profesiones
+## Category-frFR: Métiers
+## Category-itIT: Professioni
+## Category-koKR: 전문 기술
+## Category-ptBR: Profissões
+## Category-ruRU: Профессии
+## Category-zhCN: 专业
+## Category-zhTW: 專業技能
+
+## DefaultState: Enabled
+## SavedVariablesPerCharacter: WhetstoneDB
+
+## OptionalDeps: LibSharedMedia-3.0
+#@alpha@
+## OptionalDeps: LibSharedMedia-3.0, BugSack, BugGrabber
+#@end-alpha@
+
+## X-Date: @project-date-iso@
+## X-Category: Professions
+## X-License: MIT
+
+## X-Curse-Project-ID: 1706128
+## X-Wago-ID: 5NRgnv63
+
+Data.lua
+Skills.lua
+Media.lua
+Bar.lua
+Options.lua
+Core.lua
+
+#@debug@
+## Version: DEV
+## AllowAddOnTableAccess: 1
+#@end-debug@

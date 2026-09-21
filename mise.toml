@@ -1,0 +1,6 @@
+[tools]
+"github:TradeSkillMaster/wowlua-ls" = "latest"
+
+[tasks.lint]
+description = "Type-check and lint Lua against the WoW API"
+run = "wowlua_ls check ."

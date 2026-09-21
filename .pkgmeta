@@ -1,0 +1,16 @@
+package-as: Whetstone
+enable-nolib-creation: no
+
+manual-changelog:
+    filename: CHANGELOG.md
+    markup-type: markdown
+
+license-output: LICENSE.txt
+
+ignore:
+    - CHANGELOG.md
+    - README.md
+    - .editorconfig
+    - .wowluarc.json
+    - mise.toml
+    - .github
