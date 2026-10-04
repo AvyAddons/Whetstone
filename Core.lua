@@ -55,6 +55,8 @@ function events.PLAYER_EQUIPMENT_CHANGED(slot)
 	ns.RequestScan()
 end
 
+function events.UPDATE_SHAPESHIFT_FORM() ns.Bar:Refresh() end
+
 function events.PLAYER_REGEN_DISABLED()
 	ns.inCombat = true
 	ns.Bar:UpdateVisibility()

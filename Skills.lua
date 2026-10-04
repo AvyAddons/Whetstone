@@ -34,6 +34,12 @@ local equippedDirty = true
 
 function ns.InvalidateEquipped() equippedDirty = true end
 
+---@return boolean
+local function IsInFeralForm()
+	local formId = GetShapeshiftFormID()
+	return formId == BEAR_FORM or formId == CAT_FORM
+end
+
 ---@param skill Skill
 ---@return boolean
 local function IsEquipped(skill)
@@ -50,6 +56,7 @@ local function IsEquipped(skill)
 		equippedDirty = false
 	end
 	if skill.emptyHanded then return mainHandEmpty end
+	if skill.shapeshifted then return IsInFeralForm() end
 	return equippedWeapons[skill.weapon] == true
 end
 

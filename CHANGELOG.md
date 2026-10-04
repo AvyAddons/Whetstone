@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Be aware th
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added
+- Feral Combat weapon skill on WoW Forever, shown while in Bear or Cat form
 
 ## [0.1.0] - 2026-09-30
 ### Added

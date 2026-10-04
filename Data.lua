@@ -78,6 +78,7 @@ end
 ---@field ranks table<number, NextRank>?
 ---@field weapon Enum.ItemWeaponSubclass?
 ---@field emptyHanded boolean?
+---@field shapeshifted boolean?
 ---@field alwaysShown boolean?
 
 ---@type Skill[]
@@ -140,6 +141,7 @@ ns.SKILLS = {
 	{ name = "Crossbows", id = 226, kind = "weapon", iconSpell = 5011, weapon = Enum.ItemWeaponSubclass.Crossbow },
 	{ name = "Thrown", id = 176, kind = "weapon", iconSpell = 2567, weapon = Enum.ItemWeaponSubclass.Thrown },
 	{ name = "Wands", id = 228, kind = "weapon", iconSpell = 5009, weapon = Enum.ItemWeaponSubclass.Wand },
+	{ name = "Feral Combat", id = 3014, kind = "weapon", iconSpell = 5487, shapeshifted = true },
 }
 
 ---@type table<string, Skill>
