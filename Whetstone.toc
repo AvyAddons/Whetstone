@@ -1,4 +1,4 @@
-## Interface: 11509, 16001
+## Interface: 11509, 16001, 20506
 
 ## Title: Whetstone
 ## Notes: Floating bar showing every tradeskill and weapon skills' current skill and cap.
@@ -35,8 +35,8 @@
 
 Data.lua
 Skills.lua
-Scan_Forever.lua [AllowLoadGameType camelot]
-Scan_Classic.lua [AllowLoadGameType vanilla]
+Scan_Forever.lua [AllowLoadGameType forever][ExcludeLoadGameType standard, classic]
+Scan_Classic.lua [AllowLoadGameType classic][ExcludeLoadGameType mainline, cata, mists]
 Media.lua
 Bar.lua
 Options.lua
