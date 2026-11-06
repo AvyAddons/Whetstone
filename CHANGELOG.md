@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+### Added
+
+- Bar width customisation
+
 ## [0.3.0] - 2026-10-31
 
 ### Added

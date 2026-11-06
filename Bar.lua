@@ -262,8 +262,10 @@ end
 ---@return number height
 local function TileSize(db)
 	local iconWidth = db.showIcon and ICON_SIZE + ICON_GAP or 0
-	if db.fullBar then return (db.showNames and 160 or 82) + iconWidth, FULL_BAR_HEIGHT end
-	return (db.showNames and 105 or 77) + iconWidth, db.showNames and 34 or (db.showBar and 30 or 28)
+	local base = db.fullBar and (db.showNames and 160 or 82) or (db.showNames and 105 or 77)
+	local width = math.floor(base * db.barWidth + 0.5) + iconWidth
+	if db.fullBar then return width, FULL_BAR_HEIGHT end
+	return width, db.showNames and 34 or (db.showBar and 30 or 28)
 end
 
 ---@param entry SkillEntry

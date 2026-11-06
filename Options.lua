@@ -27,6 +27,7 @@ ns.DEFAULTS = {
 	vertical = false,
 	perLine = 6,
 	scale = 1,
+	barWidth = 1,
 	spacing = 4,
 	bgAlpha = 0.6,
 	border = true,
@@ -87,6 +88,12 @@ local LAYOUT = {
 
 	{ header = "Appearance" },
 	{ key = "scale", label = "Scale", slider = { min = 0.5, max = 2, step = 0.05, format = "%.2f" } },
+	{
+		key = "barWidth",
+		label = "Bar width",
+		tooltip = "Width of each tile's bar and text, relative to the default.",
+		slider = { min = 0.5, max = 2, step = 0.05, format = "%.2f" },
+	},
 	{ key = "spacing", label = "Tile spacing", slider = { min = 0, max = 20, step = 1, format = "%d" } },
 	{ key = "bgAlpha", label = "Background opacity", slider = { min = 0, max = 1, step = 0.05, format = "%.2f" } },
 	{ key = "border", label = "Show border" },
