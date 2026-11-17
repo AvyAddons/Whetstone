@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-11-17
+
 ### Changed
 
 - Settings are shared by every character on the account. A character can keep its own position, visibility, or skill list from the "This character" section of the options
