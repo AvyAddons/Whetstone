@@ -19,6 +19,7 @@
 ## Category-zhTW: 專業技能
 
 ## DefaultState: Enabled
+## SavedVariables: WhetstoneGlobalDB
 ## SavedVariablesPerCharacter: WhetstoneDB
 
 ## OptionalDeps: LibSharedMedia-3.0
@@ -38,6 +39,7 @@ Skills.lua
 Scan_Forever.lua [AllowLoadGameType forever][ExcludeLoadGameType standard, classic]
 Scan_Classic.lua [AllowLoadGameType classic][ExcludeLoadGameType mainline, cata, mists]
 Media.lua
+Profile.lua
 Bar.lua
 Options.lua
 Core.lua

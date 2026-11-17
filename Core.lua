@@ -8,17 +8,6 @@ ns.playerLevel = 1
 
 function ns.Print(...) print("|cff33ccff" .. addonName .. ":|r", ...) end
 
-local function InitDB()
-	WhetstoneDB = WhetstoneDB or {}
-	local db = WhetstoneDB
-	for key, value in pairs(ns.DEFAULTS) do
-		if db[key] == nil then db[key] = value end
-	end
-	---@type table<string, true>
-	db.hidden = db.hidden or {}
-	ns.db = db
-end
-
 local frame = CreateFrame("Frame")
 ---@type table<string, fun(...)>
 local events = {}
@@ -30,7 +19,7 @@ local function RegisterRuntimeEvents()
 end
 
 function events.PLAYER_LOGIN()
-	InitDB()
+	ns.InitProfile()
 	ns.playerLevel = UnitLevel("player")
 	ns.Bar:Init()
 	ns.Options:Init()

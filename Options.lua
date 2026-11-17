@@ -155,6 +155,24 @@ function Options:Init()
 		CreateSettingsButtonInitializer("Position", "Reset position", function() ns.Bar:ResetPosition() end, nil, true)
 	)
 
+	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer("This character"))
+	for _, group in ipairs(ns.OVERRIDE_GROUPS) do
+		local setting = Settings.RegisterProxySetting(
+			category,
+			addonName .. "_override_" .. group.key,
+			Settings.VarType.Boolean,
+			group.label,
+			false,
+			function() return ns.IsOverridden(group) end,
+			function(value)
+				ns.SetOverridden(group, value)
+				ns.Bar:ApplyPosition()
+				ns.Bar:Apply()
+			end
+		)
+		Settings.CreateCheckbox(category, setting, group.tooltip)
+	end
+
 	for _, kind in ipairs(ns.KIND_ORDER) do
 		layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(ns.KINDS[kind].label))
 		for _, skill in ipairs(ns.SKILLS) do

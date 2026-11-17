@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+### Changed
+
+- Settings are shared by every character on the account. A character can keep its own position, visibility, or skill list from the "This character" section of the options
+- The first character you log in with after updating supplies the shared settings. Other characters keep their own position, visibility, and skill list where these differ from it
+
 ## [0.4.0] - 2026-11-06
 
 ### Added
