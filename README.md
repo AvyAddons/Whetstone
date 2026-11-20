@@ -39,7 +39,7 @@ Access the configuration panel via `/whet`, by right-clicking the bar, or throug
 
 ### Display
 - Toggle icons, names, progress bars, and bonuses
-- Hide secondary skills, weapon skills, maxed skills, or any individual skill
+- Hide secondary skills, weapon skills, capped skills, maxed skills, or any individual skill
 
 ### Appearance
 - Scale, tile spacing, background opacity, and border

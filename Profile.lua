@@ -26,7 +26,7 @@ ns.OVERRIDE_GROUPS = {
 		key = "skills",
 		label = "Character-specific skills",
 		tooltip = "This character keeps its own skill list and skill filters.",
-		keys = { "hidden", "showSecondary", "showWeapons", "allWeapons", "hideMaxed" },
+		keys = { "hidden", "showSecondary", "showWeapons", "allWeapons", "hideMaxed", "hideCapped" },
 	},
 }
 
@@ -119,6 +119,14 @@ function ns.InitProfile()
 	Upgrade(char, CHAR_STEPS, global)
 	char.overrides = char.overrides or {}
 	DropInvalid(char.overrides)
+	-- A key added to an overridden group starts from the global value.
+	for _, group in ipairs(ns.OVERRIDE_GROUPS) do
+		if ns.IsOverridden(group) then
+			for _, key in ipairs(group.keys) do
+				if char.overrides[key] == nil then char.overrides[key] = Copy(global[key]) end
+			end
+		end
+	end
 
 	-- Reads prefer the character's override, and writes go wherever the value was read from.
 	ns.db = setmetatable({}, {

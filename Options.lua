@@ -24,6 +24,7 @@ ns.DEFAULTS = {
 	showWeapons = true,
 	allWeapons = false,
 	hideMaxed = false,
+	hideCapped = false,
 	vertical = false,
 	perLine = 6,
 	scale = 1,
@@ -73,6 +74,11 @@ local LAYOUT = {
 		tooltip = "Otherwise a weapon skill shows while its weapon is equipped or after it gains a point this session.",
 	},
 	{ key = "hideMaxed", label = "Hide maxed skills" },
+	{
+		key = "hideCapped",
+		label = "Hide capped skills",
+		tooltip = "Hides skills at their current cap that cannot advance yet. Skills ready to train stay shown.",
+	},
 	{ key = "vertical", label = "Vertical layout" },
 	{ key = "perLine", label = "Tiles per line", slider = { min = 1, max = 20, step = 1, format = "%d" } },
 
