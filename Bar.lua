@@ -282,6 +282,7 @@ local function IsVisible(entry, db)
 	if db.hidden[skill.name] or (visibilitySetting and not db[visibilitySetting]) then return false end
 	if db.hideMaxed and entry.state == "MAXED" then return false end
 	if db.hideCapped and entry.state == "CAPPED" then return false end
+	if db.combatFocus and (skill.kind == "weapon") ~= ns.inCombat then return false end
 	return skill.kind ~= "weapon" or ns.WeaponEarnsTile(entry)
 end
 

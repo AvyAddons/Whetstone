@@ -46,15 +46,16 @@ end
 
 function events.UPDATE_SHAPESHIFT_FORM() ns.Bar:Refresh() end
 
-function events.PLAYER_REGEN_DISABLED()
-	ns.inCombat = true
+---@param inCombat boolean
+local function SetCombat(inCombat)
+	ns.inCombat = inCombat
+	ns.Bar:Refresh()
 	ns.Bar:UpdateVisibility()
 end
 
-function events.PLAYER_REGEN_ENABLED()
-	ns.inCombat = false
-	ns.Bar:UpdateVisibility()
-end
+function events.PLAYER_REGEN_DISABLED() SetCombat(true) end
+
+function events.PLAYER_REGEN_ENABLED() SetCombat(false) end
 
 frame:RegisterEvent("PLAYER_LOGIN")
 frame:SetScript("OnEvent", function(_, event, ...) events[event](...) end)

@@ -26,7 +26,7 @@ ns.OVERRIDE_GROUPS = {
 		key = "skills",
 		label = "Character-specific skills",
 		tooltip = "This character keeps its own skill list and skill filters.",
-		keys = { "hidden", "showSecondary", "showWeapons", "allWeapons", "hideMaxed", "hideCapped" },
+		keys = { "hidden", "showSecondary", "showWeapons", "allWeapons", "combatFocus", "hideMaxed", "hideCapped" },
 	},
 }
 

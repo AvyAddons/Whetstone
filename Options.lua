@@ -23,6 +23,7 @@ ns.DEFAULTS = {
 	showSecondary = true,
 	showWeapons = true,
 	allWeapons = false,
+	combatFocus = false,
 	hideMaxed = false,
 	hideCapped = false,
 	vertical = false,
@@ -72,6 +73,11 @@ local LAYOUT = {
 		key = "allWeapons",
 		label = "Show every weapon skill",
 		tooltip = "Otherwise a weapon skill shows while its weapon is equipped or after it gains a point this session.",
+	},
+	{
+		key = "combatFocus",
+		label = "Combat focus",
+		tooltip = "Shows only weapon skills in combat, and only professions and secondary skills out of combat.",
 	},
 	{ key = "hideMaxed", label = "Hide maxed skills" },
 	{

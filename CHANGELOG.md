@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+### Added
+
+- Combat focus option. Shows only weapon skills in combat, and only professions and secondary skills out of combat
+
 ## [0.6.0] - 2026-11-20
 
 ### Added
