@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-11-20
+
 ### Added
 
 - Option to hide capped skills. Skills ready to train stay shown
