@@ -1,7 +1,7 @@
 {
   "ignore": ["Libs/"],
   "globals": {
-    "read": ["C_SkillInfo", "UnitDefenseSkill"]
+    "read": ["C_SkillInfo", "UnitDefenseSkill", "TomTom"]
   },
   "diagnostics": {
     "enable": ["need-check-nil"]

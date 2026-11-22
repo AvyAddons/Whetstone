@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+### Added
+
+- Expert and Artisan trainers for each crafting profession, shown by faction in the tooltip and the ready-to-train message
+- The vendor or quest giver for Expert and Artisan Cooking, First Aid, and Fishing
+- Specialization trainers for Blacksmithing, Engineering, and Leatherworking
+- Left-click a tile to mark its trainer with TomTom, or with a map pin link on WoW Forever
+
 ## [0.7.0] - 2026-11-20
 
 ### Added

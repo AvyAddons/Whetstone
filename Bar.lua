@@ -96,6 +96,22 @@ local function AddRequirement(text, met)
 	GameTooltip:AddLine(text, c[1], c[2], c[3])
 end
 
+local MAP_PIN_LINK = "|cffffff00|Hworldmap:%d:%d:%d|h[%s]|h|r"
+
+---@return boolean
+local function CanWaypoint() return TomTom ~= nil or C_Map.SetUserWaypoint ~= nil end
+
+-- Setting a native pin from addon code taints Blizzard's map, so the player clicks a map pin link instead.
+---@param trainer Trainer
+local function Waypoint(trainer)
+	if TomTom then
+		TomTom:AddWaypoint(trainer.map, trainer.x / 100, trainer.y / 100, { title = trainer.name, from = "Whetstone" })
+	elseif C_Map.SetUserWaypoint then
+		local link = MAP_PIN_LINK:format(trainer.map, trainer.x * 100, trainer.y * 100, MAP_PIN_HYPERLINK or "Map Pin")
+		ns.Print(trainer.name, link)
+	end
+end
+
 ---@param tile SkillTile
 local function ShowTooltip(tile)
 	local entry = ns.snapshot[tile.skillName]
@@ -123,16 +139,28 @@ local function ShowTooltip(tile)
 	end
 
 	local nextRank = entry.nextRank
+	local trainer = ns.NextTrainer(nextRank)
 	if nextRank then
 		GameTooltip:AddLine(" ")
 		GameTooltip:AddLine(("Next: %s (cap %d)"):format(nextRank.name, nextRank.cap), GOLD[1], GOLD[2], GOLD[3])
 		AddRequirement(("Requires skill %d"):format(nextRank.requiredSkill), entry.rank >= nextRank.requiredSkill)
 		AddRequirement(("Requires level %d"):format(nextRank.requiredLevel), ns.playerLevel >= nextRank.requiredLevel)
 		GameTooltip:AddLine(nextRank.hint, 0.8, 0.8, 0.8, true)
+		if trainer then GameTooltip:AddLine(ns.DescribeTrainer(trainer), 1, 1, 1) end
 	end
 
+	local spec = skill.specialization
+	if spec and entry.rank >= spec.requiredSkill and entry.state ~= "MAXED" and spec[ns.faction] then
+		GameTooltip:AddLine(" ")
+		GameTooltip:AddLine("Specialization", GOLD[1], GOLD[2], GOLD[3])
+		AddRequirement(("Requires level %d"):format(spec.requiredLevel), ns.playerLevel >= spec.requiredLevel)
+		GameTooltip:AddLine(spec[ns.faction], 0.8, 0.8, 0.8, true)
+	end
+
+	local hints = ns.db.locked and "Right-click: options" or "Drag: move   Right-click: options"
+	if trainer and CanWaypoint() then hints = "Click: waypoint   " .. hints end
 	GameTooltip:AddLine(" ")
-	GameTooltip:AddLine(ns.db.locked and "Right-click: options" or "Drag: move   Right-click: options", 0.5, 0.5, 0.5)
+	GameTooltip:AddLine(hints, 0.5, 0.5, 0.5)
 	GameTooltip:Show()
 end
 
@@ -140,7 +168,7 @@ end
 ---@return SkillTile
 local function CreateTile(parent)
 	local t = CreateFrame("Button", nil, parent) --[[@as SkillTile]]
-	t:RegisterForClicks("RightButtonUp")
+	t:RegisterForClicks("LeftButtonUp", "RightButtonUp")
 	t:RegisterForDrag("LeftButton")
 
 	t.icon = t:CreateTexture(nil, "ARTWORK")
@@ -181,7 +209,12 @@ local function CreateTile(parent)
 
 	t:SetScript("OnEnter", ShowTooltip)
 	t:SetScript("OnLeave", function() GameTooltip:Hide() end)
-	t:SetScript("OnClick", function() ns.Options:Open() end)
+	t:SetScript("OnClick", function(self, button)
+		if button == "RightButton" then return ns.Options:Open() end
+		local entry = ns.snapshot[self.skillName]
+		local trainer = entry and ns.NextTrainer(entry.nextRank)
+		if trainer then Waypoint(trainer) end
+	end)
 	t:SetScript("OnDragStart", function() Bar:StartMove() end)
 	t:SetScript("OnDragStop", function() Bar:StopMove() end)
 	return t

@@ -5,6 +5,8 @@ local ns = select(2, ...)
 
 ns.inCombat = false
 ns.playerLevel = 1
+---@type string?
+ns.faction = nil
 
 function ns.Print(...) print("|cff33ccff" .. addonName .. ":|r", ...) end
 
@@ -21,6 +23,7 @@ end
 function events.PLAYER_LOGIN()
 	ns.InitProfile()
 	ns.playerLevel = UnitLevel("player")
+	ns.faction = UnitFactionGroup("player")
 	ns.Bar:Init()
 	ns.Options:Init()
 	RegisterRuntimeEvents()

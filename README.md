@@ -28,6 +28,14 @@ Each tile is coloured by the state of its skill:
 ### Tooltips
 - Points left until the cap and points gained this session
 - The next rank, its skill and level requirements, and where to learn it
+- The trainer, vendor, or quest giver for your faction, for Expert and Artisan crafting ranks and secondary skills. On TBC Anniversary every capital city trainer teaches Expert and Artisan, so only secondary skills name one
+- Specialization trainers for Blacksmithing, Engineering, and Leatherworking once you reach the skill
+
+### Waypoints
+Left-click a tile to mark the next rank's trainer:
+
+- With [TomTom](https://www.curseforge.com/wow/addons/tomtom), a TomTom waypoint
+- Without TomTom, on WoW Forever, a map pin link in chat. Click the link to place the pin
 
 ### Alerts
 - Flash on skill-up

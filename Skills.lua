@@ -78,12 +78,25 @@ local function GetState(rank, max, nextRank)
 	return "LEVELLING"
 end
 
+---@param nextRank NextRank?
+---@return Trainer?
+function ns.NextTrainer(nextRank) return nextRank and nextRank.where and nextRank.where[ns.faction] end
+
+---@param trainer Trainer
+---@return string
+function ns.DescribeTrainer(trainer)
+	local map = C_Map.GetMapInfo(trainer.map)
+	return map and ("%s, %s"):format(trainer.name, map.name) or trainer.name
+end
+
 ---@param entry SkillEntry
 local function Alert(entry)
 	local name, nextRank = entry.skill.name, entry.nextRank
 	local msg
 	if entry.state == "READY" and nextRank then
 		msg = ("%s can advance to %s (cap %d). %s"):format(name, nextRank.name, nextRank.cap, nextRank.hint)
+		local trainer = ns.NextTrainer(nextRank)
+		if trainer then msg = ("%s %s."):format(msg, ns.DescribeTrainer(trainer)) end
 	elseif entry.state == "CAPPED" then
 		msg = ("%s is capped at %d until %s."):format(name, entry.max, ns.KINDS[entry.skill.kind].cappedUntil)
 	elseif entry.state == "MAXED" then

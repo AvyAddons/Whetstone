@@ -35,6 +35,7 @@
 ## X-Wago-ID: 5NRgnv63
 
 Data.lua
+Data_Forever.lua [AllowLoadGameType forever][ExcludeLoadGameType standard, classic]
 Skills.lua
 Scan_Forever.lua [AllowLoadGameType forever][ExcludeLoadGameType standard, classic]
 Scan_Classic.lua [AllowLoadGameType classic][ExcludeLoadGameType mainline, cata, mists]
