@@ -113,6 +113,13 @@ local function TrainerRanks(expert, artisan)
 	return CraftingRanks({ [150] = { where = expert }, [225] = { where = artisan } })
 end
 
+-- Shared by Herbalism, Mining and Skinning.
+local GATHERING_RANKS = OverrideRanks({
+	[75] = { requiredLevel = 0 },
+	[150] = { requiredLevel = 10 },
+	[225] = { requiredLevel = 25 },
+})
+
 ---@class Skill
 ---@field name string
 ---@field id number
@@ -184,7 +191,7 @@ ns.SKILLS = {
 			Horde = "Gnomish from Oglethorpe Obnoticus in Booty Bay, Goblin from Nixx Sprocketspring in Gadgetzan.",
 		},
 	},
-	{ name = "Herbalism", id = 182, kind = "primary", iconSpell = 2366, ranks = NEXT_RANK_BY_CAP },
+	{ name = "Herbalism", id = 182, kind = "primary", iconSpell = 2366, ranks = GATHERING_RANKS },
 	{
 		name = "Leatherworking",
 		id = 165,
@@ -203,8 +210,8 @@ ns.SKILLS = {
 				.. "Tribal from Se'Jib in Stranglethorn Vale.",
 		},
 	},
-	{ name = "Mining", id = 186, kind = "primary", iconSpell = 2575, ranks = NEXT_RANK_BY_CAP },
-	{ name = "Skinning", id = 393, kind = "primary", iconSpell = 8613, ranks = NEXT_RANK_BY_CAP },
+	{ name = "Mining", id = 186, kind = "primary", iconSpell = 2575, ranks = GATHERING_RANKS },
+	{ name = "Skinning", id = 393, kind = "primary", iconSpell = 8613, ranks = GATHERING_RANKS },
 	{
 		name = "Tailoring",
 		id = 197,
@@ -223,6 +230,7 @@ ns.SKILLS = {
 		iconSpell = 2550,
 		ranks = OverrideRanks({
 			[150] = {
+				requiredLevel = 0,
 				hint = "Buy Expert Cookbook.",
 				where = {
 					Alliance = Trainer("Shandrina", 1440, 49.5, 67.1),
@@ -243,6 +251,7 @@ ns.SKILLS = {
 		iconSpell = 3273,
 		ranks = OverrideRanks({
 			[150] = {
+				requiredLevel = 0,
 				hint = "Buy Expert First Aid - Under Wraps.",
 				where = {
 					Alliance = Trainer("Deneb Walker", 1417, 27.0, 58.8),
@@ -266,6 +275,7 @@ ns.SKILLS = {
 		iconSpell = 7620,
 		ranks = OverrideRanks({
 			[150] = {
+				requiredLevel = TBC and 0 or 20,
 				hint = "Buy Expert Fishing - The Bass and You.",
 				where = Both(Trainer("Old Man Heming", 1434, 27.4, 77.2)),
 			},

@@ -144,7 +144,9 @@ local function ShowTooltip(tile)
 		GameTooltip:AddLine(" ")
 		GameTooltip:AddLine(("Next: %s (cap %d)"):format(nextRank.name, nextRank.cap), GOLD[1], GOLD[2], GOLD[3])
 		AddRequirement(("Requires skill %d"):format(nextRank.requiredSkill), entry.rank >= nextRank.requiredSkill)
-		AddRequirement(("Requires level %d"):format(nextRank.requiredLevel), ns.playerLevel >= nextRank.requiredLevel)
+		if nextRank.requiredLevel > 0 then
+			AddRequirement(("Requires level %d"):format(nextRank.requiredLevel), ns.playerLevel >= nextRank.requiredLevel)
+		end
 		GameTooltip:AddLine(nextRank.hint, 0.8, 0.8, 0.8, true)
 		if trainer then GameTooltip:AddLine(ns.DescribeTrainer(trainer), 1, 1, 1) end
 	end

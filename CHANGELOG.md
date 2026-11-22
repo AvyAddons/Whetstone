@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Specialization trainers for Blacksmithing, Engineering, and Leatherworking
 - Left-click a tile to mark its trainer with TomTom, or with a map pin link on WoW Forever
 
+### Fixed
+
+- Level requirements for the next rank. Herbalism, Mining and Skinning need level 10 for Expert and 25 for Artisan, and none on WoW Forever. The Expert Cooking and First Aid books need no level, and neither does the Expert Fishing book on TBC Anniversary
+
 ## [0.7.0] - 2026-11-20
 
 ### Added
