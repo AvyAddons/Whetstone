@@ -222,7 +222,13 @@ ns.SKILLS = {
 		kind = "secondary",
 		iconSpell = 2550,
 		ranks = OverrideRanks({
-			[150] = { hint = "Expert Cookbook, sold by vendors." },
+			[150] = {
+				hint = "Buy Expert Cookbook.",
+				where = {
+					Alliance = Trainer("Shandrina", 1440, 49.5, 67.1),
+					Horde = Trainer("Wulan", 1443, 26.2, 69.7),
+				},
+			},
 			[225] = {
 				requiredSkill = 225,
 				hint = 'Quest "Clamlette Surprise".',
