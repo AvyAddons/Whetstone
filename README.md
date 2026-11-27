@@ -1,7 +1,7 @@
 # Whetstone
 > A floating bar showing the current rank and cap of your professions and weapon skills.
 
-Built for Classic Era, where skills level slowly and caps depend on your rank and character level. _Taintless, fast, and small!_
+Built for Classic Era, WoW Forever, and TBC Anniversary, where skills level slowly and caps depend on your rank and character level. _Taintless, fast, and small!_
 
 ## Features
 
@@ -30,6 +30,7 @@ Each tile is coloured by the state of its skill:
 - The next rank, its skill and level requirements, and where to learn it
 - The trainer, vendor, or quest giver for your faction, for Expert and Artisan crafting ranks and secondary skills. On TBC Anniversary every capital city trainer teaches Expert and Artisan, so only secondary skills name one
 - Specialization trainers for Blacksmithing, Engineering, and Leatherworking once you reach the skill
+- Artisan Enchanting names Annora, inside the Uldaman dungeon, without a waypoint
 
 ### Waypoints
 Left-click a tile to mark the next rank's trainer:

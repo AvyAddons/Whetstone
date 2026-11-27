@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-11-27
+
 ### Added
 
 - Expert and Artisan trainers for each crafting profession, shown by faction in the tooltip and the ready-to-train message
